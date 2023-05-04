@@ -1,11 +1,31 @@
-// import React from 'react';
+import React from 'react';
 
-// function Pin() {
-//   return (
-//     <div>
+const styles = {
+  pin: {
+    margin: '15px',
+    padding: 0,
+    borderRadius: '16px',
+    backgroundColor: 'red',
 
-//     </div>
-//   );
-// }
+  },
+  small: {
+    gridrowEnd: 'span 26',
+  },
+  medium: {
+    gridrowEnd: 'span 33',
+  },
+  large: {
+    gridrowEnd: 'span 45',
+  },
+};
 
-// export default Pin;
+function Pin() {
+  return (
+    <div style={{
+      ...styles.pin,
+    }}
+    />
+  );
+}
+
+export default Pin;

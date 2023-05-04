@@ -4,6 +4,7 @@ import '../styles/globals.css';
 import { AuthProvider } from '../utils/context/authContext'; // TODO: COMMENT IN FOR AUTH
 import ViewDirectorBasedOnUserAuthStatus from '../utils/ViewDirector'; // TODO: COMMENT IN FOR AUTH
 import PinterestLayout from '../components/PinterestLayout';
+import NoAuth from '../components/NoAuth';
 
 function MyApp({ Component, pageProps }) {
   return (
