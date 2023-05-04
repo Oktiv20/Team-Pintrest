@@ -9,10 +9,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <PinterestLayout />
-      <NoAuth
-        component={Component}
-        pageProps={pageProps}
-      />
 
       {/* TODO: Delete NoAuth component above and comment in code below for authentication */}
       <AuthProvider>
