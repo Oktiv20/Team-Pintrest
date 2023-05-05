@@ -29,3 +29,28 @@ function Pin() {
 }
 
 export default Pin;
+
+// import React from "react";
+// import PropTypes from "prop-types";
+
+// const Card = ({ imageUrl, title, description }) => {
+//   return (
+//     <div className="card">
+//       <div className="card-image">
+//         <img src={imageUrl} alt={title} />
+//       </div>
+//       <div className="card-content">
+//         <h2 className="card-title">{title}</h2>
+//         <p className="card-description">{description}</p>
+//       </div>
+//     </div>
+//   );
+// };
+
+// Card.propTypes = {
+//   imageUrl: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+//   description: PropTypes.string.isRequired,
+// };
+
+// export default Card;
