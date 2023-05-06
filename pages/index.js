@@ -1,23 +1,28 @@
-// import { Button } from 'react-bootstrap';
-// import { signOut } from '../utils/auth';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
+import { getPins } from '../api/pinsData';
+import PinCard from '../components/PinCard';
 
-function Home() {
+function Pin() {
   const { user } = useAuth();
 
+  const [userPins, setPins] = useState([]);
+
+  const getAllPins = () => {
+    getPins(user.uid).then(setPins);
+  };
+
+  useEffect(() => {
+    getAllPins();
+  }, []);
+
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
+    <div className="text-center d-flex flex-wrap">
+      {userPins.map((pin) => (
+        <PinCard key={pin.firebaseKey} pinObj={pin} onUpdate={getAllPins} />
+      ))}
     </div>
   );
 }
 
-export default Home;
+export default Pin;

@@ -3,7 +3,7 @@ import { clientCredentials } from '../utils/client';
 const dbUrl = clientCredentials.databaseURL;
 
 const getPins = () => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/pins.json"`, {
+  fetch(`${dbUrl}/pins.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
