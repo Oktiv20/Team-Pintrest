@@ -1,14 +1,15 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
 import {
   Navbar, Container, Nav, Button,
 } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { signOut } from '../utils/auth';
+import Search from './search';
 
-export default function NavBarAuth() {
+export default function NavBarAuth({ searchInput, setSearchInput }) {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Container>
         <Link passHref href="/">
           <Navbar.Brand>Pintrest</Navbar.Brand>
@@ -29,10 +30,21 @@ export default function NavBarAuth() {
             <Link passHref href="/profile">
               <Nav.Link>Profile</Nav.Link>
             </Link>
-            <Button variant="danger" onClick={signOut}>Sign Out</Button>
+            <Search searchInput={searchInput} setSearchInput={setSearchInput} />
+            <Button variant="light" onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
+
+NavBarAuth.propTypes = {
+  searchInput: PropTypes.string,
+  setSearchInput: PropTypes.func,
+};
+
+NavBarAuth.defaultProps = {
+  searchInput: '',
+  setSearchInput: '',
+};
