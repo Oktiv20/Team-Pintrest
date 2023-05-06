@@ -25,14 +25,20 @@ const createUserPin = (payload) => new Promise((resolve, reject) => {
 });
 
 const getUserPins = (uid) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/pins/.json?orderBy="uid"&equalTo="${uid}"`, {
+  fetch(`${dbUrl}/pins.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve(Object.values(data)))
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 
@@ -62,7 +68,7 @@ const updateUserPin = (payload) => new Promise((resolve, reject) => {
 });
 
 const deleteUserPin = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/players/${firebaseKey}.json`, {
+  fetch(`${dbUrl}/pins/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

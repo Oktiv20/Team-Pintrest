@@ -20,6 +20,15 @@ export default function NavBarAuth() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
+            <Link passHref href="/pin/new">
+              <Nav.Link>Create Pin</Nav.Link>
+            </Link>
+            <Link passHref href="/userPin">
+              <Nav.Link>User&apos;s Pin</Nav.Link>
+            </Link>
+            <Link passHref href="/profile">
+              <Nav.Link>Profile</Nav.Link>
+            </Link>
             <Button variant="danger" onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>

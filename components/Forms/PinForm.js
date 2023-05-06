@@ -14,14 +14,14 @@ const initialState = {
   destinationLink: '',
 };
 
-function PinForm({ obj }) {
+function PinForm({ pinObj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
-    if (obj.firebaseKey) setFormInput(obj);
-  }, [obj, user]);
+    if (pinObj.firebaseKey) setFormInput(pinObj);
+  }, [pinObj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,20 +33,20 @@ function PinForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.firebaseKey) {
+    if (pinObj.firebaseKey) {
       updateUserPin(formInput)
-        .then(() => router.push(`/pin/${obj.firebaseKey}`));
+        .then(() => router.push(`/pin/${pinObj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createUserPin(payload).then(() => {
-        router.push('/');
+        router.push('/userPin');
       });
     }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Pin</h2>
+      <h2 className="text-white mt-5">{pinObj.firebaseKey ? 'Update' : 'Create'} Pin</h2>
 
       {/* PIN TITLE */}
       <FloatingLabel controlId="floatingInput1" label="Pin Title" className="mb-3">
@@ -84,14 +84,26 @@ function PinForm({ obj }) {
         />
       </FloatingLabel>
 
+      {/* DESTINATION LINK */}
+      <FloatingLabel controlId="floatingInput4" label="Destination Link" className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Destination Link"
+          name="destinationLink"
+          value={formInput.destinationLink}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+
       {/* SUBMIT BUTTON  */}
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Pin</Button>
+      <Button type="submit">{pinObj.firebaseKey ? 'Update' : 'Create'} Pin</Button>
     </Form>
   );
 }
 
 PinForm.propTypes = {
-  obj: PropTypes.shape({
+  pinObj: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
     image: PropTypes.string,
@@ -101,7 +113,7 @@ PinForm.propTypes = {
 };
 
 PinForm.defaultProps = {
-  obj: initialState,
+  pinObj: initialState,
 };
 
 export default PinForm;
