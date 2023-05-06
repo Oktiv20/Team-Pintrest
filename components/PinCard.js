@@ -21,6 +21,7 @@ export default function PinCard({ pinObj, onUpdate }) {
         <Card.Body>
           <Card.Img variant="top" src={pinObj.image} alt={pinObj.image} style={{ height: '400px' }} />
           <br />
+          <h5 className="card-text bold">{pinObj.title}</h5>
           <h5 className="card-text bold">{pinObj.description}</h5>
           <h5 className="card-text">{pinObj.destinationLink}</h5>
           <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
