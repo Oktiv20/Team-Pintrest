@@ -1,56 +1,47 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Link from 'next/link';
+import { deleteUserPin } from '../api/userpinsData';
 
-const styles = {
-  pin: {
-    margin: '15px',
-    padding: 0,
-    borderRadius: '16px',
-    backgroundColor: 'red',
+export default function PinCard({ pinObj, onUpdate }) {
+  const deleteThisPin = () => {
+    if (window.confirm(`Delete ${pinObj.description}?`)) {
+      deleteUserPin(pinObj.firebaseKey).then(() => onUpdate());
+    }
+  };
 
-  },
-  small: {
-    gridrowEnd: 'span 26',
-  },
-  medium: {
-    gridrowEnd: 'span 33',
-  },
-  large: {
-    gridrowEnd: 'span 45',
-  },
-};
-
-function Pin() {
   return (
-    <div style={{
-      ...styles.pin,
-    }}
-    />
+    <div>
+      <Card style={{
+        width: '18rem', margin: '10px', backgroundColor: 'black', color: 'white', textAlign: 'text-center',
+      }}
+      >
+        <Card.Body>
+          <Card.Img variant="top" src={pinObj.image} alt={pinObj.image} style={{ height: '400px' }} />
+          <br />
+          <h5 className="card-text bold">{pinObj.description}</h5>
+          <h5 className="card-text">{pinObj.destinationLink}</h5>
+          <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
+            <Button variant="info">EDIT</Button>
+          </Link>
+          <Button variant="danger" onClick={deleteThisPin} className="m-2">
+            DELETE
+          </Button>
+        </Card.Body>
+      </Card>
+    </div>
   );
 }
 
-export default Pin;
-
-// import React from "react";
-// import PropTypes from "prop-types";
-
-// const Card = ({ imageUrl, title, description }) => {
-//   return (
-//     <div className="card">
-//       <div className="card-image">
-//         <img src={imageUrl} alt={title} />
-//       </div>
-//       <div className="card-content">
-//         <h2 className="card-title">{title}</h2>
-//         <p className="card-description">{description}</p>
-//       </div>
-//     </div>
-//   );
-// };
-
-// Card.propTypes = {
-//   imageUrl: PropTypes.string.isRequired,
-//   title: PropTypes.string.isRequired,
-//   description: PropTypes.string.isRequired,
-// };
-
-// export default Card;
+PinCard.propTypes = {
+  pinObj: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.string,
+    destinationLink: PropTypes.string,
+    firebaseKey: PropTypes.string,
+  }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
+};

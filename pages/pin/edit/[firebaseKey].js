@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getSingleUserPin } from '../../../api/userpinsData';
 import PinForm from '../../../components/Forms/PinForm';
 
@@ -11,5 +11,5 @@ export default function EditPin() {
   useEffect(() => {
     getSingleUserPin(firebaseKey).then(setEditPin);
   }, [firebaseKey]);
-  return (<PinForm obj={editPin} />);
+  return (<PinForm pinObj={editPin} />);
 }
