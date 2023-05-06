@@ -35,7 +35,7 @@ function PinForm({ pinObj }) {
     e.preventDefault();
     if (pinObj.firebaseKey) {
       updateUserPin(formInput)
-        .then(() => router.push(`/pin/${pinObj.firebaseKey}`));
+        .then(() => router.push('/userPin'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createUserPin(payload).then(() => {
