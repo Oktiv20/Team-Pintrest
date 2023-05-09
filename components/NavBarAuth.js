@@ -2,34 +2,53 @@
 import React from 'react';
 import Link from 'next/link';
 import {
-  Navbar, Container, Nav, Button,
+  Navbar, Container, Nav, Image,
 } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
+// import { getUserPins } from '../api/userpinsData';
 
 export default function NavBarAuth() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container>
-        <Link passHref href="/">
-          <Navbar.Brand>Pintrest</Navbar.Brand>
-        </Link>
+    <Navbar collapseOnSelect expand="lg">
+      <Container className="left-header">
+        <Nav.Link passhref="true" href="/">
+          <Image
+            src="../images/logo.png"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />
+        </Nav.Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             <Link passHref href="/">
-              <Nav.Link>Home</Nav.Link>
+              <Nav.Link className="nav-text, home-button">Home</Nav.Link>
             </Link>
             <Link passHref href="/pin/new">
-              <Nav.Link>Create Pin</Nav.Link>
+              <Nav.Link className="nav-text, create-button">Create</Nav.Link>
             </Link>
-            <Link passHref href="/userPin">
-              <Nav.Link>User&apos;s Pin</Nav.Link>
+            {/* <Link passHref href="/userPin">
+              <Nav.Link className="nav-text, userPin-button">User&apos;s Pins</Nav.Link>
+            </Link> */}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+      <Container className="search-bar">
+        <input className="search-input" type="text" placeholder="Search" />
+        <button type="submit" className="enter-button">Go</button>
+      </Container>
+      <Container className="right-header">
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Link passHref href="">
+              <Nav.Link className="nav-text, notifications">Notifications</Nav.Link>
+            </Link>
+            <Link passHref href="">
+              <Nav.Link className="nav-text, messages">Messages</Nav.Link>
             </Link>
             <Link passHref href="/profile">
-              <Nav.Link>Profile</Nav.Link>
+              <Nav.Link className="nav-text">Profile</Nav.Link>
             </Link>
-            <Button variant="danger" onClick={signOut}>Sign Out</Button>
           </Nav>
         </Navbar.Collapse>
       </Container>

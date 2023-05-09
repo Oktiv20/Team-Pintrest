@@ -69,8 +69,8 @@ const updatePin = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getPinPinned = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/pins.json?orderBy="author_id"&equalTo="${firebaseKey}"`, {
+const getPinPinned = (uid) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/saved.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

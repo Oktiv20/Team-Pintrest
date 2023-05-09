@@ -79,10 +79,33 @@ const deleteUserPin = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createSavedPin = (payload) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/saved.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const setcode = { firebaseKey: data.name };
+      fetch(`${dbUrl}/saved/${setcode.firebaseKey}.json`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(setcode),
+      }).then(resolve);
+    })
+    .catch(reject);
+});
+
 export {
   createUserPin,
   getUserPins,
   getSingleUserPin,
   updateUserPin,
   deleteUserPin,
+  createSavedPin,
 };
