@@ -68,7 +68,7 @@ const updateUserPin = (payload) => new Promise((resolve, reject) => {
 });
 
 const deleteUserPin = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/pins/${firebaseKey}.json`, {
+  fetch(`${dbUrl}/saved/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -79,10 +79,37 @@ const deleteUserPin = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createSavedPin = (payload) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/saved.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const getPinPinned = (uid) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/saved.json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 export {
   createUserPin,
   getUserPins,
   getSingleUserPin,
   updateUserPin,
   deleteUserPin,
+  createSavedPin,
+  getPinPinned,
 };

@@ -20,7 +20,7 @@
 //               <Nav.Link>Home</Nav.Link>
 //             </Link>
 //             <Link passHref href="/delete-me">
-//               <Nav.Link>Create Pin</Nav.Link>
+//               <Nav.Link> Pin</Nav.Link>
 //             </Link>
 //           </Nav>
 //         </Navbar.Collapse>

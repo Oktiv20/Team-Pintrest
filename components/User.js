@@ -1,21 +1,20 @@
 import { PropTypes } from 'prop-types';
+import { Container } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
 
 export default function User({ userObj }) {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={userObj.photoURL} />
-      <Card.Body>
-        <Card.Title>{userObj.displayName}</Card.Title>
-        <Card.Text>
-          {userObj.email}
-        </Card.Text>
-      </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroup.Item>Last Sign In: {userObj.metadata.lastSignInTime}</ListGroup.Item>
-      </ListGroup>
-    </Card>
+    <Container className="userProfile">
+      <Card className="userCard">
+        <Card.Img className="user-img" variant="top" src={userObj.photoURL} />
+        <Card.Body className="userCard-body">
+          <h4>{userObj.displayName}</h4>
+          <div className="userCard-email">
+            {userObj.email}
+          </div>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 }
 
@@ -24,8 +23,5 @@ User.propTypes = {
     photoURL: PropTypes.string,
     displayName: PropTypes.string,
     email: PropTypes.string,
-    metadata: PropTypes.shape({
-      lastSignInTime: PropTypes.string,
-    }),
-  }).isRequired,
-};
+  }),
+}.isRequired;

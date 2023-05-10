@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import { Button } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { createUserPin, updateUserPin } from '../../api/userpinsData';
 
@@ -35,70 +35,90 @@ function PinForm({ pinObj }) {
     e.preventDefault();
     if (pinObj.firebaseKey) {
       updateUserPin(formInput)
-        .then(() => router.push('/userPin'));
+        .then(() => router.push('/'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createUserPin(payload).then(() => {
-        router.push('/userPin');
+        router.push('/');
       });
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{pinObj.firebaseKey ? 'Update' : 'Create'} Pin</h2>
+    <Container className="create-form fixed">
+      <div className="form fixed flex">
+        <div className="select-size abs flex">
+          <Form className="form-submit" onSubmit={handleSubmit}>
+            <Button className="pinSelect" variant="">Search</Button>
+            <Button className="submitBtn" type="submit">{pinObj.firebaseKey ? 'Update' : 'Create'}</Button>
+          </Form>
+        </div>
+        <div className="media">
+          <div className="photo">
+            <div className="trigger abs" title="No File Chosen">
+              <div className="abs triggerBtn">
+                <input type="file" className="upload-file" />
+              </div>
+            </div>
+            <div className="note">We recommend using high-quality .jpg files less than 20MB</div>
+          </div>
+          <Button type="submit" className="saveBtn">Save from site</Button>
+        </div>
+      </div>
+      <Container className="input-section">
+        <div className="right-side">
+          <Form className="form-section">
 
-      {/* PIN TITLE */}
-      <FloatingLabel controlId="floatingInput1" label="Pin Title" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter Pin Title"
-          name="title"
-          value={formInput.title}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
+            {/* PIN TITLE */}
+            <FloatingLabel controlId="floatingInput1" label="Add your title" className="input title">
+              <Form.Control
+                type="text"
+                placeholder="Add your title"
+                name="title"
+                value={formInput.title}
+                onChange={handleChange}
+                required
+              />
+            </FloatingLabel>
+            {/* IMAGE INPUT  */}
+            <FloatingLabel controlId="floatingInput2" label="Pin Image" className="input image">
+              <Form.Control
+                type="url"
+                placeholder="Enter an image url"
+                name="image"
+                value={formInput.image}
+                onChange={handleChange}
+                required
+              />
+            </FloatingLabel>
 
-      {/* IMAGE INPUT  */}
-      <FloatingLabel controlId="floatingInput2" label="Pin Image" className="mb-3">
-        <Form.Control
-          type="url"
-          placeholder="Enter an image url"
-          name="image"
-          value={formInput.image}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
+            {/* DESCRIPTION */}
+            <FloatingLabel controlId="floatingInput3" label="Tell everyone what your Pin is about" className="input description">
+              <Form.Control
+                type="text"
+                placeholder="Pin Description"
+                name="description"
+                value={formInput.description}
+                onChange={handleChange}
+                required
+              />
+            </FloatingLabel>
 
-      {/* DESCRIPTION */}
-      <FloatingLabel controlId="floatingInput3" label="Description" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Pin Description"
-          name="description"
-          value={formInput.description}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      {/* DESTINATION LINK */}
-      <FloatingLabel controlId="floatingInput4" label="Destination Link" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Destination Link"
-          name="destinationLink"
-          value={formInput.destinationLink}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
-      {/* SUBMIT BUTTON  */}
-      <Button type="submit">{pinObj.firebaseKey ? 'Update' : 'Create'} Pin</Button>
-    </Form>
+            {/* DESTINATION LINK */}
+            <FloatingLabel controlId="floatingInput4" label="Destination Link" className="input destinationLink">
+              <Form.Control
+                type="text"
+                placeholder="Destination Link"
+                name="destinationLink"
+                value={formInput.destinationLink}
+                onChange={handleChange}
+                required
+              />
+            </FloatingLabel>
+          </Form>
+        </div>
+      </Container>
+    </Container>
   );
 }
 
