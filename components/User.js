@@ -6,12 +6,12 @@ export default function User({ userObj }) {
   return (
     <Container className="userProfile">
       <Card className="userCard">
-        <Card.Img variant="top" src={userObj.photoURL} />
-        <Card.Body>
-          <Card.Title>{userObj.displayName}</Card.Title>
-          <Card.Text>
+        <Card.Img className="user-img" variant="top" src={userObj.photoURL} />
+        <Card.Body className="userCard-body">
+          <h4>{userObj.displayName}</h4>
+          <div className="userCard-email">
             {userObj.email}
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
     </Container>

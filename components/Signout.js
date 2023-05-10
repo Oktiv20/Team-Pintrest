@@ -4,16 +4,8 @@ import { signOut } from '../utils/auth';
 
 function Signout() {
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '250px',
-        margin: '0 auto',
-      }}
-    >
-      <Button type="button" size="md" className="copy-btn" onClick={signOut}>
+    <div className="signOutBtn">
+      <Button type="button" variant="danger" size="lg" className="copy-btn" onClick={signOut}>
         Sign Out
       </Button>
     </div>

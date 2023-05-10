@@ -35,11 +35,11 @@ function PinForm({ pinObj }) {
     e.preventDefault();
     if (pinObj.firebaseKey) {
       updateUserPin(formInput)
-        .then(() => router.push('/userPin'));
+        .then(() => router.push('/'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createUserPin(payload).then(() => {
-        router.push('/index');
+        router.push('/');
       });
     }
   };
@@ -50,7 +50,7 @@ function PinForm({ pinObj }) {
         <div className="select-size abs flex">
           <Form className="form-submit" onSubmit={handleSubmit}>
             <Button className="pinSelect" variant="">Search</Button>
-            <Button className="submitBtn" type="submit">{pinObj.firebaseKey ? 'Update' : 'Create'} Pin</Button>
+            <Button className="submitBtn" type="submit">{pinObj.firebaseKey ? 'Update' : 'Create'}</Button>
           </Form>
         </div>
         <div className="media">
@@ -62,7 +62,7 @@ function PinForm({ pinObj }) {
             </div>
             <div className="note">We recommend using high-quality .jpg files less than 20MB</div>
           </div>
-          <button type="submit" className="saveBtn">Save from site</button>
+          <Button type="submit" className="saveBtn">Save from site</Button>
         </div>
       </div>
       <Container className="input-section">
@@ -80,7 +80,6 @@ function PinForm({ pinObj }) {
                 required
               />
             </FloatingLabel>
-
             {/* IMAGE INPUT  */}
             <FloatingLabel controlId="floatingInput2" label="Pin Image" className="input image">
               <Form.Control

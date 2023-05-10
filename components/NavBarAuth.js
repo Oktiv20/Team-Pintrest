@@ -27,9 +27,9 @@ export default function NavBarAuth() {
             <Link passHref href="/pin/new">
               <Nav.Link className="nav-text, create-button">Create</Nav.Link>
             </Link>
-            {/* <Link passHref href="/userPin">
+            <Link passHref href="/userPin">
               <Nav.Link className="nav-text, userPin-button">User&apos;s Pins</Nav.Link>
-            </Link> */}
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
