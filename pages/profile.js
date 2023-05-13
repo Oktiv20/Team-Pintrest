@@ -11,8 +11,12 @@ export default function Profile() {
 
   const [userSavedPins, setUserSavedPins] = useState([]);
 
-  useEffect(() => {
+  const getAllPinnedPins = () => {
     getPinPinned(user.uid).then(setUserSavedPins);
+  };
+
+  useEffect(() => {
+    getAllPinnedPins();
   }, []);
 
   return (
@@ -20,7 +24,7 @@ export default function Profile() {
       <User userObj={user} />
       <div className="text-center d-flex flex-wrap">
         {userSavedPins.map((pin) => (
-          <SavedPinCard key={pin.firebaseKey} pinObj={pin} onUpdate={getPinPinned} />
+          <SavedPinCard key={pin.firebaseKey} pinObj={pin} onUpdate={getAllPinnedPins} />
         ))}
       </div>
       <Signout />

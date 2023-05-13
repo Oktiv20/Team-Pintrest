@@ -2,34 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-// import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { createSavedPin } from '../api/userpinsData';
-import { useAuth } from '../utils/context/authContext';
-// import { deleteSinglePin } from '../api/pinsData';
+import Link from 'next/link';
+// import { useRouter } from 'next/router';
+// import { createSavedPin } from '../api/userpinsData';
+// import { useAuth } from '../utils/context/authContext';
+import { deleteSinglePin } from '../api/pinsData';
 
-export default function PinCard({ pinObj }) {
-  // const [viewPinDetails, setPinDetails] = useState({});
-  const router = useRouter();
-  const { user } = useAuth();
-
-  // const { firebaseKey } = router.query;
-
-  const handleSaveClick = (e) => {
-    e.preventDefault();
-    const payload = {
-      uid: user.uid, pin_id: pinObj.firebaseKey, image: pinObj.image, title: pinObj.title, description: pinObj.description, destinationLink: pinObj.destinationLink,
-    };
-    createSavedPin(payload).then(() => {
-      router.push('/profile');
-      console.warn(pinObj);
-    });
+export default function UserPinCard({ pinObj, onUpdate }) {
+  const deleteThisPin = () => {
+    if (window.confirm(`Delete ${pinObj.description}?`)) {
+      deleteSinglePin(pinObj.firebaseKey).then(() => onUpdate());
+    }
   };
-
-  // const handleClickDetails = (e) => {
-  //   e.preventDefault();
-  //   viewPinDetails(firebaseKey).then(setPinDetails);
-  // };
 
   return (
     <div className="pin-area">
@@ -41,10 +25,18 @@ export default function PinCard({ pinObj }) {
           <Card.Body>
             <Card.Img className="pinImage" variant="top" src={pinObj.image} alt={pinObj.image} style={{ height: '350px' }} />
             <Card.ImgOverlay>
-              <Button variant="danger" onClick={handleSaveClick} className="card-unsave">Save</Button>
+              <br />
               <h5 className="card-text bold">{pinObj.title}</h5>
               <h5 className="card-text bold">{pinObj.description}</h5>
               <h5 className="card-text bold">{pinObj.destinationLink}</h5>
+              <div>
+                <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref className="">
+                  <Button variant="info" className="card-user">EDIT</Button>
+                </Link>
+                <Button className="card-user" variant="danger" onClick={deleteThisPin}>
+                  DELETE
+                </Button>
+              </div>
             </Card.ImgOverlay>
           </Card.Body>
         </Card>
@@ -53,7 +45,7 @@ export default function PinCard({ pinObj }) {
   );
 }
 
-PinCard.propTypes = {
+UserPinCard.propTypes = {
   pinObj: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
@@ -61,4 +53,5 @@ PinCard.propTypes = {
     destinationLink: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
