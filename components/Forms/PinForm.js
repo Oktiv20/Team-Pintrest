@@ -45,8 +45,8 @@ function PinForm({ pinObj }) {
   };
 
   return (
-    <Container className="create-form fixed">
-      <div className="form fixed flex">
+    <Container className="create-form">
+      <div className="form">
         <div className="select-size abs flex">
           <Form className="form-submit" onSubmit={handleSubmit}>
             <Button className="pinSelect" variant="">Search</Button>

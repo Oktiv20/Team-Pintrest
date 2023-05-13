@@ -38,10 +38,10 @@ body {
 
 .user-img {
   border-radius: 100px;
-    height: 175px;
-    width: 175px;
-    position: relative;
-    left: 75px;
+  height: 175px;
+  width: 175px;
+  position: relative;
+  left: 75px;
 }
 
 .userProfile .user-img .userCard-body {
@@ -66,7 +66,6 @@ h4 {
 }
 
 .left-header {
-  display: flex;
   margin-left: 15px;
   margin-top: 15px;
   padding-left: 10px;
@@ -77,10 +76,12 @@ h4 {
 .home-button {
   color: black;
   margin-left: 10px;
+  margin-top: 10px;
 }
 
 .create-button {
   margin-left: 10px;
+  margin-top: 10px;
   color: black;
 }
 
@@ -93,12 +94,12 @@ h4 {
 
 .search-bar {
   background-color: #efefef;
-  width: 100%;
+  width: 130%;
   border-radius: 50px;
   height: 3rem;
   display: flex;
   align-items: center;
-  margin-left: 0;
+  margin-left: 10px;
   margin-top: 15px;
 }
 
@@ -124,10 +125,27 @@ h4 {
 /* RIGHT NAV */
 
 .right-header {
-  width: 35%;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 15px;
+  padding: 0px;
+  width: 30%;
+  display: flex ;
+}
+
+.notifications {
+  color: black;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.messages {
+  margin-left: 10px;
+  margin-top: 10px;
+  color: black;
+}
+
+.profile {
+  margin-left: 10px;
+  margin-top: 10px;
+  color: black;
 }
 
 .notifications {
@@ -137,13 +155,14 @@ h4 {
 
 /* FORM CONTAINER */
 
-.create-form {
+.create-form.container {
   display: flex;
-  border: none;
+  box-sizing: border-box;
+  border: 0px;
   border-radius: 20px;
   background-color: #efefef;
   width: 80%;
-  margin: 60px;
+  margin-top: 20px;
 }
 
 .form .media {
@@ -151,7 +170,7 @@ h4 {
   padding-right: 0px;
   padding-left: 40px;
   padding-bottom: 40px;
-  width: 100%;
+  width: 130%;
   margin-right: 0%;
 }
 
@@ -165,21 +184,12 @@ h4 {
 }
 
 .form .media .note {
-    position: relative;
-    top: 45%;
-    width: 90%;
-    left: 5%;
-    color: rgb(113, 113, 113);
-}
-
-/* .form .media .photo .trigger {
   position: relative;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  border: 3px;
-} */
+  top: 45%;
+  width: 90%;
+  left: 5%;
+  color: rgb(113, 113, 113);
+}
 
 .upload-file {
   width: 300px;
@@ -203,6 +213,7 @@ h4 {
   background-color: gray;
 }
 
+
 /* RIGHT SIDE OF FORM  */
 
 /* FORM OUTLINE */
@@ -212,16 +223,21 @@ h4 {
   border: none;
   border-radius: 0px;
 }
+
 /* FORM TEXT STYLING */
 
-.input-section .right-side {
-  flex: 1;
-  padding: 120px 20px 30px 0px;
+.right-side {
+  padding: 0px 300px 30px 80px;
+}
+
+.input-section .form-section {
+  width: 150%;
+  margin-top: 90px;
+  margin-left: 10%;
 }
 
 .input-section .right-side .form-section .input {
-  padding: 8px 0px;
-  width: 100%;
+  padding: 10px 0px;
   border-bottom: 1px gray solid;
   outline: none;
   margin-bottom: 10x;
@@ -257,42 +273,28 @@ h4 {
 
 /* SELECT AND SAVE PIN */
 
-.abs {
-  position: relative;
-}
 
-.flex {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-}
-
-.create-form .form .select-size {
-  top: 40px;
-  left: 200%;
-  width: 200px;
-}
-
-.create-form .select-size .pinSelect {
-  position: relative;
-  right: 60%;
+.form-submit .pinSelect {
   width: 200px;
   border: 109px;
   border-color: black;
   border-radius: 5px 0px 0px 5px;
   padding: 7px;
   background-color: lightgray;
+  position: relative;
+  top: 30px;
+  left: 700px;
 }
 
-.create-form .select-size .submitBtn {
+.form-submit .submitBtn {
   height: 38px;
   width: 80px;
   background-color: rgb(230, 0, 35);
   border: 0px;
   border-radius: 0px 5px 5px 0px;
   position: relative;
-  bottom: 50%;
-  left: 40%;
+  top: 30px;
+  left: 700px;
 }
 
 /* PIN CARD */
@@ -307,49 +309,114 @@ h4 {
   padding: 0px;
 }
 
-.btn-primary {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: none;
-  --bs-btn-border-color: none;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: none;
-  --bs-btn-hover-border-color: none;
-  --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: lightgray;
-  --bs-btn-active-border-color: none;
-}
-
-.single-pin {
-  transition: .6s ease-out;
-}
-
-.single-pin:hover{
-  transform: translateY(2px);
-}
-
-.single-pin:hover:before{
-  opacity: 1;
-}
-
-.single-pin:hover .pinImage {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* .single-pin:before{
-  content: '';
+.card-img-overlay {
   position: absolute;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, #000, transparent);
-  z-index: 2;
-  transition: 0.5s;
-  opacity: 1;
+  padding: 0px;
+}
+
+.btn-primary {
+  --bs-btn-bg: none;
+  --bs-btn-border-color: none;
+  --bs-btn-hover-bg: none;
+  --bs-btn-hover-border-color: none;
+}
+
+/* .single-pin {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 } */
+
+.single-pin:hover .pinImage {
+  opacity: 0.9;
+}
+
+.card-text {
+  color: white;
+  -webkit-transition: all 400ms ease-out;
+  -moz-transition: all 400ms ease-out;
+  -o-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  transform: translateY(30px);
+  -webkit-transform: translateY(30px);
+}
+
+.card-text {
+  font-size: 1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.3s;
+  position: relative;
+  top: 150px;
+}
+
+.card-unsave {
+  font-size: 1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.3s;
+  position: relative;
+  left: 70px;
+  top: 20px;
+  border-radius: 20px;
+}
+
+.card-btn {
+  font-size: 1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.3s;
+  position: relative;
+  left: 70px;
+  top: 20px;
+}
+
+.card-user {
+  font-size: 1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition-delay: 0.2s;
+  transition-duration: 0.3s;
+  position: relative;
+  top: 182px;
+}
+
+.single-pin:hover .card-text,
+.single-pin:focus .card-text {
+  opacity: 1;
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+}
+
+.single-pin:hover .card-unsave,
+.single-pin:focus .card-unsave {
+  opacity: 1;
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+}
+
+.single-pin:hover .card-btn,
+.single-pin:focus .card-btn {
+  opacity: 1;
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+}
+
+.single-pin:hover .card-user,
+.single-pin:focus .card-user {
+  opacity: 1;
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+}
 
 .signOutBtn {
   padding-top: 10px;

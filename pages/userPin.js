@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
 import { getUserPins } from '../api/userpinsData';
-import PinCard from '../components/PinCard';
+import UserPinCard from '../components/UserPinCard';
 
 function UserPin() {
   const { user } = useAuth();
@@ -20,7 +20,7 @@ function UserPin() {
   return (
     <div className="text-center d-flex flex-wrap">
       {userPins.map((pin) => (
-        <PinCard key={pin.firebaseKey} pinObj={pin} onUpdate={getAllUserPins} />
+        <UserPinCard key={pin.firebaseKey} pinObj={pin} onUpdate={getAllUserPins} />
       ))}
     </div>
   );

@@ -4,6 +4,9 @@ import Link from 'next/link';
 import {
   Navbar, Container, Nav, Image,
 } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faCommentDots, faCircleUser } from '@fortawesome/free-solid-svg-icons';
+// import Search from './SearchBar';
 // import { getUserPins } from '../api/userpinsData';
 
 export default function NavBarAuth() {
@@ -34,20 +37,21 @@ export default function NavBarAuth() {
         </Navbar.Collapse>
       </Container>
       <Container className="search-bar">
+        {/* <Search /> */}
         <input className="search-input" type="text" placeholder="Search" />
         <button type="submit" className="enter-button">Go</button>
       </Container>
       <Container className="right-header">
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="">
             <Link passHref href="">
-              <Nav.Link className="nav-text, notifications">Notifications</Nav.Link>
+              <Nav.Link className="nav-text, notifications"><FontAwesomeIcon icon={faBell} size="xl" /></Nav.Link>
             </Link>
             <Link passHref href="">
-              <Nav.Link className="nav-text, messages">Messages</Nav.Link>
+              <Nav.Link className="nav-text, messages"><FontAwesomeIcon icon={faCommentDots} size="xl" /></Nav.Link>
             </Link>
             <Link passHref href="/profile">
-              <Nav.Link className="nav-text">Profile</Nav.Link>
+              <Nav.Link className="nav-text, profile"><FontAwesomeIcon icon={faCircleUser} size="xl" /></Nav.Link>
             </Link>
           </Nav>
         </Navbar.Collapse>
