@@ -25,7 +25,7 @@ This group application was designed to give users a "mock" Pinterest-like experi
 
 # Contributors
 
-[Kyle Blunt](https://github.com/Oktiv20)
-[Alexis Hammer](https://github.com/ahammer1)
-[Sean Bryant](https://github.com/Snc1730)
-[Riley Tullis](https://github.com/rtullis98)
+- [Kyle Blunt](https://github.com/Oktiv20)
+- [Alexis Hammer](https://github.com/ahammer1)
+- [Sean Bryant](https://github.com/Snc1730)
+- [Riley Tullis](https://github.com/rtullis98)
