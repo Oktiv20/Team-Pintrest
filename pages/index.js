@@ -18,10 +18,12 @@ function Pin() {
   }, []);
 
   return (
-    <div className="text-center d-flex flex-wrap">
-      {userPins.map((pin) => (
-        <PinCard key={pin.firebaseKey} pinObj={pin} onUpdate={getAllPins} />
-      ))}
+    <div className="pinSection">
+      <div className="text-center d-flex flex-wrap">
+        {userPins.map((pin) => (
+          <PinCard key={pin.firebaseKey} pinObj={pin} onUpdate={getAllPins} />
+        ))}
+      </div>
     </div>
   );
 }

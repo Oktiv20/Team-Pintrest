@@ -31,7 +31,7 @@ export default function NavBarAuth() {
               <Nav.Link className="nav-text, create-button">Create</Nav.Link>
             </Link>
             <Link passHref href="/userPin">
-              <Nav.Link className="nav-text, userPin-button">User&apos;s Pins</Nav.Link>
+              <Nav.Link className="nav-text, userPin-button">My Pins</Nav.Link>
             </Link>
           </Nav>
         </Navbar.Collapse>
