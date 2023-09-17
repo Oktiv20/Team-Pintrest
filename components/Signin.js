@@ -15,7 +15,7 @@ function Signin() {
     >
       <h1 id="signIn">WELCOME TO PINTEREST</h1>
       <p id="sign">SIGN IN BELOW!</p>
-      <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
+      <Button type="button" size="lg" variant="danger" className="copy-btn" onClick={signIn}>
         Sign In
       </Button>
     </div>

@@ -21,6 +21,9 @@ body {
   background-color: white;
 }
 
+.pinSection {
+  margin-left: 70px;
+}
 
 /* USER PAGE  */
 
@@ -60,7 +63,6 @@ h4 {
 }
 
 /* NAV BAR */
-
 .nav-text {
   color: black;
 }
@@ -76,22 +78,24 @@ h4 {
 .home-button {
   color: black;
   margin-left: 10px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .create-button {
   margin-left: 10px;
-  margin-top: 10px;
+  margin-top: 5px;
   color: black;
 }
 
 .userPin-button {
+  display: inline-block;
   margin-left: 10px;
+  margin-top: 5px;
   color: black;
+  white-space: nowrap; /* Prevent line break */
 }
 
 /* MIDDLE NAV */
-
 .search-bar {
   background-color: #efefef;
   width: 130%;
@@ -123,33 +127,20 @@ h4 {
 }
 
 /* RIGHT NAV */
-
 .right-header {
   padding: 0px;
   width: 30%;
-  display: flex ;
+  display: flex;
+  align-items: center; /* Align items vertically */
 }
 
-.notifications {
-  color: black;
-  margin-left: 30px;
-  margin-top: 10px;
-}
-
-.messages {
-  margin-left: 10px;
-  margin-top: 10px;
-  color: black;
-}
-
+.notifications,
+.messages,
 .profile {
+  color: black;
   margin-left: 10px;
   margin-top: 10px;
-  color: black;
-}
-
-.notifications {
-  color: black;
+  white-space: nowrap; /* Prevent line break */
 }
 
 
@@ -334,6 +325,7 @@ h4 {
 
 .single-pin:hover .pinImage {
   opacity: 0.9;
+  filter: brightness(50%);
 }
 
 .card-text {

@@ -22,10 +22,12 @@ export default function Profile() {
   return (
     <>
       <User userObj={user} />
-      <div className="text-center d-flex flex-wrap">
-        {userSavedPins.map((pin) => (
-          <SavedPinCard key={pin.firebaseKey} pinObj={pin} onUpdate={getAllPinnedPins} />
-        ))}
+      <div className="pinSection">
+        <div className="text-center d-flex flex-wrap">
+          {userSavedPins.map((pin) => (
+            <SavedPinCard key={pin.firebaseKey} pinObj={pin} onUpdate={getAllPinnedPins} />
+          ))}
+        </div>
       </div>
       <Signout />
     </>
